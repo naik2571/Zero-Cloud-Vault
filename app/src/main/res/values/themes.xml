@@ -1,0 +1,8 @@
+<resources>
+    <style name="Theme.ZeroVault" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:statusBarColor">#0B0F19</item>
+        <item name="android:navigationBarColor">#0B0F19</item>
+        <item name="android:windowBackground">#0B0F19</item>
+        <item name="colorPrimary">#10B981</item>
+    </style>
+</resources>

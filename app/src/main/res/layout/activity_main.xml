@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/vault_bg">
+
+    <!-- Vault Unlocked Content -->
+    <LinearLayout
+        android:id="@+id/layoutVaultContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Top Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:text="🔐"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:background="#1510B981" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZEROCLOUD VAULT"
+                    android:textColor="@color/vault_text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.05" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hardware AES-256 • Air-Gapped 2FA"
+                    android:textColor="@color/vault_text_secondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvLockVaultBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LOCK"
+                android:textColor="@color/vault_accent_amber"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="6dp"
+                android:background="#15F59E0B" />
+        </LinearLayout>
+
+        <!-- Stats Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="12dp"
+            android:background="@color/vault_card"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/tvItemCount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0 Encrypted Items"
+                android:textColor="@color/vault_text_primary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🟢 ZERO NETWORK"
+                android:textColor="@color/vault_accent_emerald"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Items Recycler -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvVault"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:paddingBottom="80dp" />
+
+        <!-- Empty State -->
+        <LinearLayout
+            android:id="@+id/layoutEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🛡️"
+                android:textSize="54sp"
+                android:layout_marginBottom="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vault is Empty"
+                android:textColor="@color/vault_text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tap + to add encrypted passwords, 2FA tokens, or secret notes."
+                android:textColor="@color/vault_text_secondary"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:layout_marginTop="6dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Floating Action Button -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="24dp"
+        android:src="@android:drawable/ic_input_add"
+        app:tint="@color/vault_bg"
+        app:backgroundTint="@color/vault_accent_emerald" />
+
+    <!-- Full-Screen Lock Overlay -->
+    <LinearLayout
+        android:id="@+id/layoutLockedOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/vault_bg"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔒"
+            android:textSize="64sp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VAULT IS LOCKED"
+            android:textColor="@color/vault_text_primary"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.08" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Protected by Hardware Keystore AES-256 and Biometric Security."
+            android:textColor="@color/vault_text_secondary"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="32dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUnlock"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="🔓 UNLOCK WITH FINGERPRINT"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/vault_bg"
+            app:cornerRadius="12dp"
+            app:backgroundTint="@color/vault_accent_emerald" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Air-Gapped: Zero network permissions requested"
+            android:textColor="@color/vault_text_secondary"
+            android:textSize="12sp"
+            android:layout_marginTop="20dp" />
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
